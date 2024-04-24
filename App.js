@@ -17,8 +17,36 @@ const parent = React.createElement(
         ]),
     ]
   );
+
+  // JSX (transpiled before it reaches JS) - Parcel - Babel
+
+  // JSX => Babel transpiles it to React.createElement => ReactElement-JS Object => HTMLElement(render)
+
+  const Title = () => (
+  <h1 className = "heading"  tabIndex={5}>Namaste React using JSX </h1>
+  )
+
+  // React Functional Component 
+  const HeadingComponent = () => {
+    return (
+    <div id="container">
+        {Title()}
+        {<Title />}
+        <Title />
+        <Title></Title>
+         <h1>Namaste React Functional Component</h1>
+    </div>)
+  }
+
+  const HeadingComponent1 = () => (
+    <div id="container">
+        {title}
+         <h1>Namaste React Functional Component</h1>
+    </div>
+  )
+
   console.log(parent);
   const root = ReactDOM.createRoot(document.getElementById("root"));
   //passing a react element inside the root
   //async defer
-  root.render(parent);
+  root.render(<HeadingComponent />);
