@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const loggedInUser = () => {
   // API call to check authentication
@@ -24,7 +25,7 @@ const Header = () => {
       <div className="nav-items">
         <ul>
           <li>Home</li>
-          <li>About</li>
+          <li><Link to="/about">About</Link></li>
           <li>Contact</li>
           <li>Cart</li>
         </ul>
