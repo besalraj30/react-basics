@@ -20,7 +20,7 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <div className="header">
+    <div className="flex">
       <Title />
       <div className="nav-items">
         <ul>
