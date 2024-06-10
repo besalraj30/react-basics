@@ -1,58 +1,89 @@
-import React, { lazy, Suspense } from "react";
-import ReactDOM, { createRoot } from "react-dom/client";
+import React, { lazy, Suspense, useEffect, useState } from "react";
+import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
+import Footer from "./components/Footer";
 import Error from "./components/Error";
-import ContactUs from "./components/ContactUs";
-import RestaurantMenu from "./components/RestaurantMenu";
-import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
-import About from "./components/About";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Contact from "./components/Contact";
+import RestaurantMenu from "./components/RestrauntMenu";
+import Profile from "./components/Profile";
+import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
 
-const Grocery = lazy(() => import("./components/Grocery"));
-
-
-const Footer = () => {
-  return <h4>Footer</h4>;
-};
+const Instamart = lazy(() => import("./components/Instamart"));
+const About = lazy(() => import("./components/About"));
+// Chunking
+// Code Splitting
+// Dynamic Bundling
+// Lazy Loading
+// On Demand Loading
+// Dynamic Import
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "Akshay Saini",
+    email: "support@namastedev.com",
+  });
+
   return (
     <>
-      <Header />
-      <Outlet />
-      <Footer />
+      <UserContext.Provider
+        value={{
+          user: user,
+          setUser: setUser,
+        }}
+      >
+        <Header />
+        <Outlet />
+        <Footer />
+      </UserContext.Provider>
     </>
   );
 };
-
 const appRouter = createBrowserRouter([
   {
-    path : "/",
+    path: "/",
     element: <AppLayout />,
     errorElement: <Error />,
-    children : [  
+    children: [
+      {
+        path: "/about", // parentPath/{path} => localhost:1244/about
+        element: (
+          <Suspense fallback={<h1>Loading....</h1>}>
+            <About />
+          </Suspense>
+        ),
+        children: [
+          {
+            path: "profile", // parentPath/{path} => localhost:1244/about/profile
+            element: <Profile />,
+          },
+        ],
+      },
       {
         path: "/",
-        element: <Body />
+        element: <Body />,
       },
       {
-        path: "/about",
-        element: <About />
+        path: "/contact",
+        element: <Contact />,
       },
-      {
-        path: "/contactus",
-        element: <ContactUs />
-      }, 
-      {
-        path: "/grocery",
-        element: <Suspense fallback={<h1>Loading ...</h1>}><Grocery /></Suspense>},
       {
         path: "/restaurant/:resId",
-        element: <RestaurantMenu />
-      }
-    ]
+        element: <RestaurantMenu />,
+      },
+      {
+        path: "/instamart",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Instamart />
+          </Suspense>
+        ),
+      },
+    ],
   },
-])
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
