@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import ProfileFunctionalComponet from "./Profile";
-import Profile from "./ProfileClass";
+// import ProfileFunctionalComponet from "./Profile";
+// import Profile from "./ProfileClass";
 import { Component } from "react";
 import UserContext from "../utils/UserContext";
 
@@ -31,7 +31,7 @@ class About extends Component {
         <p>
           This is the Namaste React Live Course Chapter 07 - Finding the Path 🚀
         </p>
-        <Profile />
+        {/* <Profile /> */}
       </div>
     );
   }

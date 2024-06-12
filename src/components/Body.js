@@ -1,9 +1,9 @@
-import { restaurantList } from "../contants";
+import { restaurantList } from "../constant";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import { filterData } from "../utils/helper";
+// import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
 
