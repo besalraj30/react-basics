@@ -43,3 +43,23 @@ Parcel:
 - Slice (cartSlice)
 - dispatch(action)
 - Selector
+
+#Types of testing (developer)
+- Unit Testing : Test your react components in isolation , only one component testing
+- Integration Testing : Multiple components talking to each other and we develop a flow of the react components talking to each other
+- End to end testing (e2e testing) : Testing a react application as soon as the user lands on the website to the time when user leaves the website
+
+#Setting up testing in our app
+- Install React Tesing Library
+- Installed Jest
+- Installed Babel dependencies
+- Configure Babel
+- Configure Parcel config file to disable default babel transpilation
+- Jest configuration => npx jest --init, test environment that wwill be used for testing - jsdom
+- Install JSDOM library
+- Install @babel/preset-react : to make jsx work in text cases
+- Include @babel/preset-react  in my babel config
+- Install @testing-library/jest-dom
+
+
+

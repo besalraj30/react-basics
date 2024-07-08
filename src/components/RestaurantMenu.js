@@ -9,6 +9,7 @@ const RestaurantMenu = () => {
   // how to read a dynamic URL params
   const { resId } = useParams();
    const resInfo = useRestaurantMenu(resId);
+   console.log(resInfo);
    const {name, cuisines, costForTwoMessage} = resInfo?.cards[0]?.card?.card?.info;
    const { itemCards } = resInfo?.cards[2]?.groupedCard?.REGULAR?.cards[1]?.card?.card;
    const onlineStatus = useOnlineStatus();

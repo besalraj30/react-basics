@@ -1,0 +1,21 @@
+{
+    "statusCode" : 0,
+    "data": {
+        "statusMessage": "done succesfully",
+        "cards": [
+            {
+                "card": {
+                    "card" : {
+                        "@type": "",
+                        "info": {
+                            "id": "425",
+                            "name": "Hotel EMpire",
+                            "city": "Bangalore"
+                        }
+                    }
+                }
+            }
+        ]
+    }
+
+}
